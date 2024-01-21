@@ -1,15 +1,20 @@
 <template>
-    <div>
-        ContactView
-    </div>
+  <div>
+    <SectionHeader
+      title="Contact Us"
+      text="We declare long prop names using camelCase because this avoids"
+    />
+  </div>
 </template>
 
 <script>
-    export default {
-        name:"ContactView"
-    }
+import SectionHeader from '@/components/SectionHeader.vue';
+export default {
+  name: "ContactView",
+  components: {
+    SectionHeader,
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
