@@ -5,7 +5,8 @@
         title="Books"
         text="We declare long prop names using camelCase because this avoids"
       />
-      <BookList :books="books" />
+      <BookList :books="paginatedBooks" />
+      <Pagination :currentPage="currentPage" :totalPages="totalPages"/>
     </div>
   </section>
 </template>
@@ -14,15 +15,29 @@
 import SectionHeader from "@/components/SectionHeader.vue";
 import BookList from '@/components/BookList.vue';
 import books from "@/db.js";
+import Pagination from "@/components/Pagination.vue";
 export default {
   name: "BooksView",
   components: {
     SectionHeader,
-    BookList
-  },
+    BookList,
+    Pagination
+},
   data() {
     return {
-      books: books
+      books: books,
+      currentPage:1,
+      itemsPerPage:4
+    }
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.books.length / this.itemsPerPage)
+    },
+    paginatedBooks() {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return this.books.slice(startIndex, endIndex);
     }
   }
 };
