@@ -11,7 +11,7 @@
         </span>
       </div>
       <h5 class="card-title mt-3 fw-semibold">{{ book.name }}</h5>
-      <p class="card-text">{{ book.description }}</p>
+      <p class="card-text">{{ truncatedText }}</p>
       <div class="d-flex justify-content-between align-items-center">
         <a href="#" class="card-link">Read More</a>
         <p
@@ -50,8 +50,18 @@ export default {
         return "bg-danger";
       }
     },
+    truncatedText() {
+      if (this.book.description.length > 80) {
+        return this.book.description.slice(0, 80) + '...';
+      }
+      return this.book.description;
+    }
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style  scoped>
+.card-text {
+  min-height: 70px;
+}
+</style>
