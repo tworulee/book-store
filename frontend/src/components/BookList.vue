@@ -14,12 +14,12 @@
 
 <script>
 import BookItem from "@/components/BookItem.vue";
-import { RouterLink } from 'vue-router';
+import { RouterLink } from "vue-router";
 export default {
   name: "BookList",
   components: {
     BookItem,
-    RouterLink
+    RouterLink,
   },
   props: {
     books: {
@@ -30,4 +30,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+a {
+  text-decoration: none;
+}
+</style>
